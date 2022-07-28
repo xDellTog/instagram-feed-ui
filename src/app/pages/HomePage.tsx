@@ -1,5 +1,6 @@
-import { styled } from "../../theme/stitches.config";
+import { lightTheme, styled } from "../../theme/stitches.config";
 import { MaterialIcons } from "../components/material-icons/MaterialIcons";
+import useThemeContext from "../hooks/useThemeContext";
 import logo from './instagram-logo.png';
 
 function getUrl(): string {
@@ -11,7 +12,7 @@ const AppBar = styled('div', {
   position: 'fixed',
   top: 0,
   width: '100%',
-  background: '$white',
+  background: '$gray1',
   height: 44,
   zIndex: 1,
 });
@@ -54,26 +55,26 @@ const StoryImageBorder = styled('div', {
   display: 'flex',
   alignItems: 'center',
   justifyContent: 'center',
-  width: 54,
-  height: 54,
+  width: 72,
+  height: 72,
   borderRadius: 100,
-  p: 4,
+  p: 6,
   mx: 6,
-  background: 'linear-gradient(45deg, yellow, orange, purple)',
+  background: 'linear-gradient(45deg, #feda75, #feda75, #fa7e1e, #fa7e1e, #d62976, #d62976, #962fbf, #4f5bd5)',
 });
 const StoryImageBorderInset = styled('div', {
   display: 'flex',
   alignItems: 'center',
   justifyContent: 'center',
-  width: 54,
-  p: 2,
-  height: 54,
+  width: 72,
+  height: 72,
+  p: 3,
   borderRadius: 100,
-  background: '$white',
+  background: '$gray1',
 });
 const StoryImage = styled('img', {
-  width: 54,
-  height: 54,
+  width: 72,
+  height: 72,
   borderRadius: 100,
 });
 const PostList = styled('div', {
@@ -103,7 +104,8 @@ const UserImage = styled('img', {
   borderRadius: 100,
 });
 const UserName = styled('p', {
-  fontSize: 12,
+  fontWeight: "bold",
+  fontSize: 13,
   px: '$1'
 });
 const PostImage = styled('img', {
@@ -120,16 +122,16 @@ const PostActionGroup = styled('div', {
   alignItems: 'center',
 });
 const PostActionButton = styled('div', {
-  px: '$1',
+  px: '$2',
 });
 const PostDescription = styled('div', {
-  fontSize: 12,
+  fontSize: 13,
   p: '$1',
 });
 const NavigationBar = styled('div', {
   position: 'fixed',
   bottom: 0,
-  background: '$white',
+  background: '$gray1',
   display: 'flex',
   width: '100%',
   alignItems: 'center',
@@ -196,18 +198,24 @@ function Post() {
 }
 
 export default function HomePage() {
+  const { theme } = useThemeContext();
+
   return (
     <>
       <AppBar>
         <AppBarWrapper>
           <AppBarActionGroup>
-            <Title src={logo} />
+            {(theme == lightTheme) ? (
+              <Title src={logo} />
+            ) : (
+              <Title src={logo} css={{ filter: 'invert(1)' }} />
+            )}
             <MaterialIcons icon="expand_more" size={'sm'} />
           </AppBarActionGroup>
 
           <AppBarActionGroup>
             <AppBarActionButton>
-              <MaterialIcons icon="add" />
+              <MaterialIcons icon="add_box" />
             </AppBarActionButton>
             <AppBarActionButton>
               <MaterialIcons icon="favorite_outlined" />
@@ -321,7 +329,7 @@ export default function HomePage() {
           <MaterialIcons icon="shopping_bag_outlined" />
         </NavigationButton>
         <NavigationButton>
-          <MaterialIcons icon="account_circle_outlined" />
+          <UserImage src={getUrl()} />
         </NavigationButton>
       </NavigationBar>
     </>

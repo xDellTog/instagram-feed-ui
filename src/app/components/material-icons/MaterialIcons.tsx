@@ -26,6 +26,9 @@ export const MaterialIconsInternal = styled('i', {
 
     variants: {
         color: {
+            'dark': {
+                color: '$gray12',
+            },
             'white': {
                 color: '$white',
             },
@@ -53,24 +56,24 @@ export const MaterialIconsInternal = styled('i', {
         },
         size: {
             'sm': {
-                fontSize: 20,
-                width: 20,
-                height: 20,
-            },
-            'md': {
                 fontSize: 24,
                 width: 24,
                 height: 24,
             },
-            'lg': {
+            'md': {
                 fontSize: 28,
                 width: 28,
                 height: 28,
             },
+            'lg': {
+                fontSize: 32,
+                width: 32,
+                height: 32,
+            },
         },
     },
     defaultVariants: {
-        color: 'black',
+        color: 'dark',
         size: 'md',
     }
 });
@@ -78,7 +81,7 @@ export const MaterialIconsInternal = styled('i', {
 export type MaterialIconsProps = {
     css?: CSS,
     icon: string,
-    color?: 'white' | 'black' | 'primary' | 'secondary' | 'success' | 'danger' | 'warning' | 'info',
+    color?: 'dark' | 'white' | 'black' | 'primary' | 'secondary' | 'success' | 'danger' | 'warning' | 'info',
     size?: 'sm' | 'md' | 'lg',
 }
 

@@ -23,7 +23,7 @@ export const ThemeProviderRoot = styled('div', {
 export function ThemeProvider({children}: ThemeProviderType) {
     const [theme, setTheme] = useState<any>(lightTheme);
 
-    const isThemeActivated = false;
+    const isThemeActivated = true;
 
     useEffect(() => {
         if (isThemeActivated) {
