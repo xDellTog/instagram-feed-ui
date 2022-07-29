@@ -1,5 +1,5 @@
-import React, {createContext, useEffect, useState} from "react";
-import {darkTheme, lightTheme, styled} from "../../theme/stitches.config";
+import React, { createContext, useEffect, useState } from "react";
+import { darkTheme, lightTheme, styled } from "../../theme/stitches.config";
 
 export type ThemeContextType = {
     theme: string,
@@ -20,10 +20,19 @@ export const ThemeProviderRoot = styled('div', {
     overflowX: 'hidden',
 });
 
-export function ThemeProvider({children}: ThemeProviderType) {
+export function ThemeProvider({ children }: ThemeProviderType) {
     const [theme, setTheme] = useState<any>(lightTheme);
 
     const isThemeActivated = true;
+
+    useEffect(() => {
+        if (isThemeActivated) {
+            const metaThemeColor = document.querySelector("meta[name='theme-color']");
+            if (!!metaThemeColor) {
+                metaThemeColor.setAttribute("content", (theme === lightTheme) ? '#FFFFFF' : '#0000000');
+            }
+        }
+    }, [theme]);
 
     useEffect(() => {
         if (isThemeActivated) {
@@ -58,7 +67,7 @@ export function ThemeProvider({children}: ThemeProviderType) {
     }
 
     return (
-        <ThemeContext.Provider value={{theme, toggleTheme}}>
+        <ThemeContext.Provider value={{ theme, toggleTheme }}>
             <ThemeProviderRoot className={theme}>
                 {children}
             </ThemeProviderRoot>
