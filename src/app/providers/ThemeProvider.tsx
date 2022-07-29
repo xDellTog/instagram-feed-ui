@@ -32,7 +32,7 @@ export function ThemeProvider({ children }: ThemeProviderType) {
                 metaThemeColor.setAttribute("content", (theme === lightTheme) ? '#FFFFFF' : '#0000000');
             }
         }
-    }, [theme]);
+    }, [theme, isThemeActivated]);
 
     useEffect(() => {
         if (isThemeActivated) {
