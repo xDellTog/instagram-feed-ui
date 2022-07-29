@@ -205,7 +205,7 @@ export default function HomePage() {
       <AppBar>
         <AppBarWrapper>
           <AppBarActionGroup>
-            {(theme == lightTheme) ? (
+            {(theme === lightTheme) ? (
               <Title src={logo} />
             ) : (
               <Title src={logo} css={{ filter: 'invert(1)' }} />

@@ -1,7 +1,6 @@
 import React from "react";
 import { CSS, styled } from "@stitches/react";
 import './MaterialIcons.scss';
-import { StyledComponent } from "@stitches/react/types/styled-component";
 
 export const MaterialIconsInternal = styled('i', {
     fontFamily: 'Material Icons, monospace',
