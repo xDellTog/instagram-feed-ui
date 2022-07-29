@@ -38,7 +38,7 @@ export function ThemeProvider({ children }: ThemeProviderType) {
         if (isThemeActivated) {
             initMatchMedia();
         }
-    }, []);
+    }, [isThemeActivated]);
 
     function toggleTheme() {
         if (theme === lightTheme) {
